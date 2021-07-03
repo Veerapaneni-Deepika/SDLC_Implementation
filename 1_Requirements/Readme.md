@@ -24,7 +24,11 @@ Since the system uses only open source software, it is free of cost.
 * It saves human efforts and resources.
 * It can run in both windows and linux operating system.
 ## Defining Our System
-    -- TBD
+![Define_System_pic](https://user-images.githubusercontent.com/86291124/124346995-7d48d280-dbff-11eb-99ec-8bb2c812d28c.png)
+
+### * Definition:
+
+
 
 ## SWOT ANALYSIS
 ![SWOT-Sample](Link to Pic)
