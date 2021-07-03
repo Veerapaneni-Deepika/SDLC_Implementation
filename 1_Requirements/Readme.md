@@ -26,9 +26,13 @@ Since the system uses only open source software, it is free of cost.
 ## Defining Our System
 ![Define_System_pic](https://user-images.githubusercontent.com/86291124/124346995-7d48d280-dbff-11eb-99ec-8bb2c812d28c.png)
 
-### * Definition:
-
-
+### Definition:
+* Library Managemnet System does the following functions:
+    + Add book in database
+    + Search for a book
+    + View a book
+    + Delete a book
+    + Update Credentials
 
 ## SWOT ANALYSIS
 ![SWOT-Sample](Link to Pic)
