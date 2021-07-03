@@ -62,9 +62,20 @@ In this project, we can do basic library management task like adding the book, v
 # Detail requirements
 ## High Level Requirements:
 --- TBD in Tabular Format 
--- ID | Description | Status (Implemented/Future)
-
+| ID | Description | Status |
+| --- | --- | --- |
+| HR01 | User must be able to add books | |
+| HR02 | User must be able to search books | |
+| HR03 | User must be able to view books | |
+| HR04 | User must be able to delete book | |
+| HR05 | User must be able to update credentials | |
+| HR06 | User must be able to do payment for the books received| |
+| HR07 | Data should be kept secure and no loss of data should be there| |
 
 ##  Low level Requirements:
 --- TBD in Tabular Format 
--- ID | Description | Status (Implemented/Future)
+| ID | Description | Status |
+| LR01 | Verify whether a file has been created or not | |
+| LR02 | Checks whether the user name, author name are valid or not | |
+| LR03 | Checks whether the format of the date is correct or not | |
+| LR04 | Create a menu function to display the library menu and ask the user to select the required option | |
