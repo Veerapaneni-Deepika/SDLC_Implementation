@@ -1,11 +1,11 @@
 # Requirements
-***
+
 ## Introduction
 
 * With the advancement of technology, library need to be ready for change and bring the technology to the library in order to retain their customer’s interest in visiting the library. Thus, in this situation, library’s system should be improved as well to facilitate staff or librarian in doing their work effectively.
 * Library management system helps both students and library manager to keep a constant track of all the books available in the library. It allows both the admin and the student to search for the desired book. It becomes necessary for colleges to keep a continuous check on the books issued and returned. When we need to issue a book or collect a book we usually need to stand in long queue and wait for many hours, this system helps us to overcome the problem.
 * This project helps me to extensively use file handling techniques and understand multiple C programming concepts.
-***
+
 ## Research
 
 * From ancient times the knowledge is spread by people
@@ -17,15 +17,19 @@ which helped a lot for storing purpose.
 ## Cost and Features and Timeline
 
 ### Cost
+
 Since the system uses only open source software, it is free of cost.
 
 ### Features
+
 * The system excludes the use of paper work by managing all the book information electronically.
 * It saves human efforts and resources.
 * It can run in both windows and linux operating system.
 
 ## Defining Our System
-![](https://github.com/Veerapaneni-Deepika/StepIn_program/blob/main/1_Requirements/Define_System_pic.png)
+
+[Click here](https://github.com/Veerapaneni-Deepika/StepIn_program/blob/main/1_Requirements/Define_System_pic.png ) to view the flowchart
+
 ### Definition:
 * Library Managemnet System does the following functions:
     + Add book in database
