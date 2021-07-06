@@ -65,7 +65,7 @@ In this project, we can do basic library management task like adding the book, v
 
 # Detail requirements
 ## High Level Requirements:
---- TBD in Tabular Format 
+
 | ID | Description | Status |
 | --- | --- | --- |
 | HR01 | User must be able to add books | |
@@ -77,7 +77,7 @@ In this project, we can do basic library management task like adding the book, v
 | HR07 | Data should be kept secure and no loss of data should be there| |
 
 ##  Low level Requirements:
---- TBD in Tabular Format 
+
 | ID | Description | Status |
 | --- | --- | --- |
 | LR01 | Verify whether a file has been created or not | |
