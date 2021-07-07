@@ -68,19 +68,22 @@ In this project, we can do basic library management task like adding the book, v
 
 | ID | Description | Status |
 | --- | --- | --- |
-| HR01 | User must be able to add books | |
-| HR02 | User must be able to search books | |
-| HR03 | User must be able to view books | |
-| HR04 | User must be able to delete book | |
-| HR05 | User must be able to update credentials | |
-| HR06 | User must be able to do payment for the books received| |
-| HR07 | Data should be kept secure and no loss of data should be there| |
+| HR01 | User must be able to add books | Implemented |
+| HR02 | User must be able to search books | Implemented |
+| HR03 | User must be able to view books | Implemented |
+| HR04 | User must be able to delete book | Implemented |
+| HR05 | User must be able to update credentials | Implemented |
+| HR06 | User must be able to do payment for the books received| Future |
+| HR07 | Data should be kept secure and no loss of data should be there| Future |
 
 ##  Low level Requirements:
 
 | ID | Description | Status |
 | --- | --- | --- |
-| LR01 | Verify whether a file has been created or not | |
-| LR02 | Checks whether the user name, author name are valid or not | |
-| LR03 | Checks whether the format of the date is correct or not | |
-| LR04 | Create a menu function to display the library menu and ask the user to select the required option | |
+| LR01 | Verify whether a file has been created or not |Implemented |
+| LR02 | Checks whether the user name, author name are valid or not | Implemented |
+| LR03 | Checks whether the format of the date is correct or not | Implemented |
+| LR04 | Create a menu function to display the library menu and ask the user to select the required option | Implemented |
+| LR05 | Make password secure | Future |
+| LR05 | Backup availability | Future |
+
