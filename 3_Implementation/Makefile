@@ -1,20 +1,27 @@
-TEST_PROJ_NAME = library_management_sys
-BUILD_DIR = Build
+# Name of the project
+PROJECT_NAME = libraryManagement
 
-INC = inc/library.h
+# Output directory
+BUILD = build
 
-SRC = project_main.c\
-src/addBook.c\
-src/deleteBook.c\
+# All source code files
+SRC = main.c\
+src/addbook.c\
+src/deletebook.c\
+src/hmessage.c\
 src/init.c\
 src/login.c\
-src/searchBook.c\
-src/updateBook.c\
-src/viewBook.c
-
+src/menu.c\
+src/message.c\
+src/pmessage.c\
+src/searchbook.c\
+src/updatebook.c\
+src/valid_name.c\
+src/valid_year.c\
+src/viewbook.c
 
 ifdef OS
-   RM = del /q
+   RM = del 
    FixPath = $(subst /,\,$1)
    EXEC = exe
 else
@@ -25,14 +32,34 @@ else
    endif
 endif
 
-all: $(SRC) $(BUILD_DIR)
-	gcc -I $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+# All include folders with header files
+INC	= inc
 
-$(BUILD_DIR):
-	mkdir $(BUILD_DIR)
+#Library Inlcudes
+#INCLUDE_LIBS = 
+INCLUDE_LIBS = -lcunit
 
-run: all
-	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+# Project Output name
+PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
 
+
+# Default target built
+$(PROJECT_NAME):all
+
+# Run the target even if the matching name exists
+.PHONY: run clean test doc all
+
+all: $(SRC) $(BUILD)
+	gcc $(SRC) -I$(INC) -o $(PROJECT_OUTPUT).out
+
+# Call `make run` to run the application
+run:$(PROJECT_NAME)
+	./$(PROJECT_OUTPUT).out
+
+# Remove all the built files, invoke by `make clean`
 clean:
-	$(RM) $(call FixPath,$(BUILD_DIR)/*)
+	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT)
+
+# Create new build folder if not present
+$(BUILD):
+	mkdir build

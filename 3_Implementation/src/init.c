@@ -1,13 +1,10 @@
-#include "library.h"
-
+#include "fun.h"
 void init()
 {
     FILE *fp = NULL;
     int status = 0;
-    printf("Default name: Deepika_Library");
-    printf("Default password: Deepika_Library");
-    const char defaultUsername[] ="Deepika_Library\n";
-    const char defaultPassword[] ="Deepika_Library\n";
+    const char defaultUsername[] ="aticleworld\n";
+    const char defaultPassword[] ="aticleworld\n";
     sFileHeader fileHeaderInfo = {0};
     status = isFileExists(FILE_NAME);
     if(!status)
@@ -23,4 +20,19 @@ void init()
             fclose(fp);
         }
     }
+}
+
+int isFileExists(const char *path)
+{
+    // Try to open file
+    FILE *fp = fopen(path, "rb");
+    int status = 0;
+    // If file does not exists
+    if (fp != NULL)
+    {
+        status = 1;
+        // File exists hence close file
+        fclose(fp);
+    }
+    return status;
 }

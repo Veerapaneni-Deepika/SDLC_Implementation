@@ -1,4 +1,4 @@
-#include "library.h"
+#include "fun.h"
 
 void addBookInDataBase()
 {
@@ -51,19 +51,6 @@ void addBookInDataBase()
         if (!status)
         {
             printf("\n\t\t\tName contain invalid character. Please enter again.");
-        }
-    }
-    while(!status);
-    do
-    {
-        //get date year,month and day from user
-        printf("\n\t\t\tEnter date in format (day/month/year): ");
-        scanf("%d/%d/%d",&addBookInfoInDataBase.bookIssueDate.dd,&addBookInfoInDataBase.bookIssueDate.mm,&addBookInfoInDataBase.bookIssueDate.yyyy);
-        //check date validity
-        status = isValidDate(&addBookInfoInDataBase.bookIssueDate);
-        if (!status)
-        {
-            printf("\n\t\t\tPlease enter a valid date.\n");
         }
     }
     while(!status);
