@@ -85,5 +85,5 @@ In this project, we can do basic library management task like adding the book, v
 | LR03 | Checks whether the format of the date is correct or not | Implemented |
 | LR04 | Create a menu function to display the library menu and ask the user to select the required option | Implemented |
 | LR05 | Make password secure | Future |
-| LR05 | Backup availability | Future |
+| LR06 | Backup availability | Future |
 
