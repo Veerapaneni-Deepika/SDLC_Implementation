@@ -1,4 +1,4 @@
-name: Unit Testing - Unity
+name: Windows unit testing
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
 
     runs-on: windows-latest
 
