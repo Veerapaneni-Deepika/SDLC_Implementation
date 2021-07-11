@@ -4,8 +4,6 @@ Visit [Pages for Report -optional](using github.io option)
 
 Build | Code Quality | Unity | [Git Inspector](using github.io option)
 ------|----------|-------|--------------
-
-
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
