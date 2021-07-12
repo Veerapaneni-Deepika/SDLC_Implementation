@@ -7,7 +7,7 @@ void viewBooks()
     FILE *fp = NULL;
     int status = 0;
     unsigned int countBook = 1;
-    headMessage("VIEW BOOKS DETAILS");
+    printf("\nVIEW BOOKS DETAILS\n");
     fp = fopen(FILE_NAME,"rb");
     if(fp == NULL)
     {
@@ -22,11 +22,11 @@ void viewBooks()
     }
     while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
     {
-        printf("\n\t\t\tBook Count = %d\n\n",countBook);
-        printf("\t\t\tBook id = %u",addBookInfoInDataBase.books_id);
-        printf("\n\t\t\tBook name = %s",addBookInfoInDataBase.bookName);
-        printf("\t\t\tBook authorName = %s",addBookInfoInDataBase.authorName);
-        printf("\t\t\tBook issue date(day/month/year) =  (%d/%d/%d)\n\n",addBookInfoInDataBase.bookIssueDate.dd,
+        printf("\nBook Count = %d\n\n",countBook);
+        printf("\nBook id = %u",addBookInfoInDataBase.books_id);
+        printf("\nBook name = %s",addBookInfoInDataBase.bookName);
+        printf("\tBook authorName = %s",addBookInfoInDataBase.authorName);
+        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n\n",addBookInfoInDataBase.bookIssueDate.dd,
                addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
         found = 1;
         ++countBook;
@@ -34,9 +34,9 @@ void viewBooks()
     fclose(fp);
     if(!found)
     {
-        printf("\n\t\t\tNo Record");
+        printf("\nNo Record");
     }
-    printf("\n\n\t\t\tPress any key to go to main menu.....");
+    printf("\nPress any key to go to main menu.....");
     fflush(stdin);
     getchar();
 }

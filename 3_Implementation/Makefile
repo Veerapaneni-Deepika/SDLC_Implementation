@@ -1,6 +1,6 @@
 # Name of the project
 PROJECT_NAME = libraryManagement
-
+FILE_NAME = DeepikaLTTS.bin
 # Output directory
 BUILD = build
 
@@ -8,17 +8,18 @@ BUILD = build
 SRC = main.c\
 src/addbook.c\
 src/deletebook.c\
-src/hmessage.c\
 src/init.c\
 src/login.c\
 src/menu.c\
 src/message.c\
-src/pmessage.c\
 src/searchbook.c\
 src/updatebook.c\
 src/valid_name.c\
 src/valid_year.c\
 src/viewbook.c
+
+# All include folders with header files
+INC = inc
 
 ifdef OS
    RM = del 
@@ -28,19 +29,17 @@ else
    ifeq ($(shell uname), Linux)
       RM = rm -rf
       FixPath = $1
-	  EXEC = out
+	   EXEC = out
    endif
 endif
 
-# All include folders with header files
-INC	= inc
 
 #Library Inlcudes
 #INCLUDE_LIBS = 
 INCLUDE_LIBS = -lcunit
 
 # Project Output name
-PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
+PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME)
 
 
 # Default target built
@@ -50,15 +49,15 @@ $(PROJECT_NAME):all
 .PHONY: run clean test doc all
 
 all: $(SRC) $(BUILD)
-	gcc $(SRC) -I$(INC) -o $(PROJECT_OUTPUT).out
+	gcc $(SRC) -I$(INC) -o $(PROJECT_OUTPUT).$(EXEC)
 
 # Call `make run` to run the application
 run:$(PROJECT_NAME)
-	./$(PROJECT_OUTPUT).out
+	./$(PROJECT_OUTPUT).$(EXEC)
 
 # Remove all the built files, invoke by `make clean`
 clean:
-	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT)
+	rm -rf $(BUILD) $(FILE_NAME)
 
 # Create new build folder if not present
 $(BUILD):

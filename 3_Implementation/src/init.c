@@ -3,8 +3,8 @@ void init()
 {
     FILE *fp = NULL;
     int status = 0;
-    const char defaultUsername[] ="aticleworld\n";
-    const char defaultPassword[] ="aticleworld\n";
+    const char defaultUsername[] ="deepika\n";
+    const char defaultPassword[] ="deepika\n";
     sFileHeader fileHeaderInfo = {0};
     status = isFileExists(FILE_NAME);
     if(!status)

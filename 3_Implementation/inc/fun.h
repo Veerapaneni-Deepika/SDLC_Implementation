@@ -4,12 +4,10 @@
     void addBookInDataBase();
     void deleteBooks();
     int isFileExists(const char *path);
-    void headMessage(const char *message);
     void init();
     void login();
     void menu();
     void welcomeMessage();
-    void printMessageCenter(const char* message);
     void searchBooks();
     void updateCredential(void);
     //int isValidDate(Date *validDate);
@@ -26,7 +24,7 @@
     #define MIN_YR  1900
     #define MAX_SIZE_USER_NAME 30
     #define MAX_SIZE_PASSWORD  20
-    #define FILE_NAME  "AticleworldLibBookS.bin"
+    #define FILE_NAME  "DeepikaLTTS.bin"
     // Macro related to the books info
     #define MAX_BOOK_NAME   50
     #define MAX_AUTHOR_NAME 50

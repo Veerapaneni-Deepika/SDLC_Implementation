@@ -6,7 +6,7 @@ void login()
     int L=0;
     sFileHeader fileHeaderInfo = {0};
     FILE *fp = NULL;
-    headMessage("Login");
+    printf("\nLogin\n");
     fp = fopen(FILE_NAME,"rb");
     if(fp == NULL)
     {
@@ -17,9 +17,9 @@ void login()
     fclose(fp);
     do
     {
-        printf("\n\n\n\t\t\t\tUsername:");
+        printf("\nUsername:");
         fgets(userName,MAX_SIZE_USER_NAME,stdin);
-        printf("\n\t\t\t\tPassword:");
+        printf("\nPassword:");
         fgets(password,MAX_SIZE_PASSWORD,stdin);
         if((!strcmp(userName,fileHeaderInfo.username)) && (!strcmp(password,fileHeaderInfo.password)))
         {
@@ -27,15 +27,15 @@ void login()
         }
         else
         {
-            printf("\t\t\t\tLogin Failed Enter Again Username & Password\n\n");
+            printf("\nLogin Failed Enter Again Username & Password\n");
             L++;
         }
     }
     while(L<=3);
     if(L>3)
     {
-        headMessage("Login Failed");
-        printf("\t\t\t\tSorry,Unknown User.");
+        printf("\nLogin Failed");
+        printf("Sorry,Unknown User.");
         getchar();
         system("cls");
     }

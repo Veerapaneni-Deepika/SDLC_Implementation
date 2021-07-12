@@ -9,18 +9,18 @@ void searchBooks()
     fp = fopen(FILE_NAME,"rb");
     if(fp == NULL)
     {
-        printf("\n\t\t\tFile is not opened\n");
+        printf("\nFile is not opened\n");
         exit(1);
     }
-    headMessage("SEARCH BOOKS");
+    printf("\nSEARCH BOOKS\n");
     //put the control on books detail
     if (fseek(fp,FILE_HEADER_SIZE,SEEK_SET) != 0)
     {
         fclose(fp);
-        printf("\n\t\t\tFacing issue while reading file\n");
+        printf("\nFacing issue while reading file\n");
         exit(1);
     }
-    printf("\n\n\t\t\tEnter Book Name to search:");
+    printf("\nEnter Book Name to search:");
     fflush(stdin);
     fgets(bookName,MAX_BOOK_NAME,stdin);
     while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
@@ -33,17 +33,17 @@ void searchBooks()
     }
     if(found)
     {
-        printf("\n\t\t\tBook id = %u\n",addBookInfoInDataBase.books_id);
-        printf("\t\t\tBook name = %s",addBookInfoInDataBase.bookName);
-        printf("\t\t\tBook authorName = %s",addBookInfoInDataBase.authorName);
-        printf("\t\t\tBook issue date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.bookIssueDate.dd,
+        printf("\nBook id = %u\n",addBookInfoInDataBase.books_id);
+        printf("\nBook name = %s",addBookInfoInDataBase.bookName);
+        printf("\nBook authorName = %s",addBookInfoInDataBase.authorName);
+        printf("\nBook issue date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.bookIssueDate.dd,
                addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
     }
     else
     {
-        printf("\n\t\t\tNo Record");
+        printf("\nNo Record");
     }
     fclose(fp);
-    printf("\n\n\n\t\t\tPress any key to go to main menu.....");
+    printf("\nPress any key to go to main menu.....\n");
     getchar();
 }

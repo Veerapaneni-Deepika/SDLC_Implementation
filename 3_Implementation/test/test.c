@@ -29,12 +29,18 @@ unsigned int books_id; // declare the integer data type
 char bookName[50];// declare the character data type
 char authorName[50];// declare the charecter data type
 char studentName[50];// declare the character data type
-char studentAddr[30];// declare the character data type
 
 FILE *fp = NULL;
 FILE *tmpFp = NULL;
 
+/* Write all the test functions */ 
+void test_addBook(void) {
+  books_id = 1;
+  strcpy(bookName,"C Prgramming");
+  strcpy(authorName,"LTTS");
+  strcpy(studentName,"testuser1");
 
+}
 /* Start of the application test */
 int main()
 {
@@ -42,26 +48,8 @@ int main()
   UNITY_BEGIN();
 
 /* Run Test functions */
-  RUN_TEST(testing_get_result);
+  RUN_TEST(test_addBook);
   
   /* Close the Unity Test Framework */
   return UNITY_END();
-}
-
-/* Write all the test functions */ 
-void testing_get_result(){
-    TEST_ASSERT_EQUAL(6, get_result(0, 0));
-    TEST_ASSERT_EQUAL(6, get_result(1, 1));
-    TEST_ASSERT_EQUAL(6, get_result(2, 2));
-    TEST_ASSERT_EQUAL(4, get_result(0, 2));
-    TEST_ASSERT_EQUAL(5, get_result(0, 1));
-    TEST_ASSERT_EQUAL(4, get_result(1, 0));
-    TEST_ASSERT_EQUAL(5, get_result(1, 2));
-    TEST_ASSERT_EQUAL(4, get_result(2, 1));
-    TEST_ASSERT_EQUAL(5, get_result(2, 0));
-}
-
-void test_addBook(void) {
-  
-
 }

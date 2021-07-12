@@ -10,7 +10,7 @@ void deleteBooks()
     FILE *fp = NULL;
     FILE *tmpFp = NULL;
     int status = 0;
-    headMessage("Delete Books Details");
+    printf("Delete Books Details\n");
     fp = fopen(FILE_NAME,"rb");
     if(fp == NULL)
     {
@@ -26,7 +26,7 @@ void deleteBooks()
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
     fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, tmpFp);
-    printf("\n\t\t\tEnter Book ID NO. for delete:");
+    printf("\nEnter Book ID NO. for delete:");
     scanf("%d",&bookDelete);
     while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
     {
@@ -39,7 +39,7 @@ void deleteBooks()
             found = 1;
         }
     }
-    (found)? printf("\n\t\t\tRecord deleted successfully....."):printf("\n\t\t\tRecord not found");
+    (found)? printf("\nRecord deleted successfully....."):printf("\nRecord not found");
     fclose(fp);
     fclose(tmpFp);
     remove(FILE_NAME);
