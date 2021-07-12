@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run cppcheck
-      run: cppcheck 3_Implementation
+      run: cppcheck-2.5 3_Implementation
