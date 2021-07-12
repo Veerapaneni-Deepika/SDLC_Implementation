@@ -49,7 +49,7 @@
         char bookName[MAX_BOOK_NAME];// declare the character data type
         char authorName[MAX_AUTHOR_NAME];// declare the charecter data type
         char studentName[MAX_STUDENT_NAME];// declare the character data type
-        char studentAddr[MAX_STUDENT_ADDRESS];// declare the character data type
+        //char studentAddr[MAX_STUDENT_ADDRESS];// declare the character data type
         Date bookIssueDate;// declare the integer data type
     } s_BooksInfo;
 

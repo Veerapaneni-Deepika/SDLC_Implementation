@@ -5,7 +5,7 @@ void menu()
     do
     {
         printf("\nMAIN MENU\n");
-        printf("\nt1.Add Books");
+        printf("\n1.Add Books");
         printf("\n2.Search Books");
         printf("\n3.View Books");
         printf("\n4.Delete Book");
@@ -35,8 +35,8 @@ void menu()
             exit(1);
             break;
         default:
-            printf("\nINVALID INPUT!!! Try again...");
+            printf("\nINVALID INPUT!!! Type between 0-5...");
         }                                            //Switch Ended
     }
-    while(choice!=0);                                        //Loop Ended
+    while(choice != 0);                                        //Loop Ended
 }
