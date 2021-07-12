@@ -8,15 +8,10 @@
 
 ### Usercase Diagram:
 
-![](https://github.com/Veerapaneni-Deepika/StepIn_program/blob/main/2_Design/Usercase%20Diagram.png)
+![](https://github.com/Veerapaneni-Deepika/StepIn_program/blob/main/2_Design/Use%20case%20diagram.png)
 
 ## Low Level Design 
-
-### Package Diagram:
-
-![](https://github.com/Veerapaneni-Deepika/StepIn_program/blob/main/2_Design/Low%20Level%20Diagram.jpg)
 
 ### Sequence Diagram:
 
 ![](https://github.com/Veerapaneni-Deepika/StepIn_program/blob/main/2_Design/Sequence%20diagram.png)
-
