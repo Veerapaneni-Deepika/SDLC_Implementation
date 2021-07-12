@@ -4,6 +4,8 @@ Visit [Pages for Report -optional](using github.io option)
 
 Build | Code Quality | Unity | [Git Inspector](using github.io option)
 ------|----------|-------|--------------
+[![C windows Build](https://github.com/Veerapaneni-Deepika/StepIn_program/actions/workflows/windows-build.yml/badge.svg)](https://github.com/Veerapaneni-Deepika/StepIn_program/actions/workflows/windows-build.yml) | 
+
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
