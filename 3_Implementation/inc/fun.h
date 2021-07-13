@@ -1,19 +1,17 @@
 #ifndef __FUN_H
 #define __FUN_H
 
-    void addBookInDataBase();
-    void deleteBooks();
-    int isFileExists(const char *path);
-    void init();
-    void login();
-    void menu();
-    void welcomeMessage();
-    void searchBooks();
-    void updateCredential(void);
-    //int isValidDate(Date *validDate);
-    int isNameValid(const char *name);
-    int  IsLeapYear(int year);
-    void viewBooks();
+    #ifdef _WIN32
+        #define CLS "cls"
+    #elif __linux__
+        #define CLS "clear"
+    #endif
+    typedef enum error_t {
+        FILE_NOT_FOUND = -1,
+        FAILURE = 0,
+        SUCCESS = 1,
+        NOT_FOUND = 2
+    }error_t;
 
     #include <stdio.h>
     #include <time.h>
@@ -24,13 +22,14 @@
     #define MIN_YR  1900
     #define MAX_SIZE_USER_NAME 30
     #define MAX_SIZE_PASSWORD  20
-    #define FILE_NAME  "DeepikaLTTS.bin"
+
     // Macro related to the books info
     #define MAX_BOOK_NAME   50
     #define MAX_AUTHOR_NAME 50
     #define MAX_STUDENT_NAME 50
     #define MAX_STUDENT_ADDRESS 300
     #define FILE_HEADER_SIZE  sizeof(sFileHeader)
+    
     //structure to store date
     typedef struct
     {
@@ -41,16 +40,31 @@
     typedef struct
     {
         char username[MAX_SIZE_USER_NAME];
-        char password[MAX_SIZE_PASSWORD];
+        char password[20];
     } sFileHeader;
-    typedef struct// to call in program
+    typedef struct
     {
         unsigned int books_id; // declare the integer data type
         char bookName[MAX_BOOK_NAME];// declare the character data type
         char authorName[MAX_AUTHOR_NAME];// declare the charecter data type
         char studentName[MAX_STUDENT_NAME];// declare the character data type
-        //char studentAddr[MAX_STUDENT_ADDRESS];// declare the character data type
-        Date bookIssueDate;// declare the integer data type
+        Date bookIssueDate;
+        Date returnDate;
     } s_BooksInfo;
+
+    error_t welcomeMessage();
+    error_t addBookInDataBase(const char *FILE_NAME);
+    error_t deleteBooks(const char *FILE_NAME);
+    error_t init();
+    error_t login(const char *FILE_NAME,const unsigned char username[],const unsigned char password[]);
+    error_t menu(const char *FILE_NAME);
+    error_t searchBooks(const char *FILE_NAME);
+    error_t updateCredential(const char *FILE_NAME);
+    error_t viewBooks(const char *FILE_NAME);
+    error_t isFileExists(const char *path);
+    error_t isNameValid(const char *name);
+    error_t isValidDate(Date *validDate);
+    Date addDate(Date *d);
+    int leap_year(int year);
 
 #endif

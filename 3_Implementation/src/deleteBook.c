@@ -1,11 +1,10 @@
 #include "fun.h"
 
-void deleteBooks()
+error_t deleteBooks(const char *FILE_NAME)
 {
-    int found = 0;
+    int found = FAILURE;
     int bookDelete = 0;
     sFileHeader fileHeaderInfo = {0};
-    char bookName[MAX_BOOK_NAME] = {0};
     s_BooksInfo addBookInfoInDataBase = {0};
     FILE *fp = NULL;
     FILE *tmpFp = NULL;
@@ -16,6 +15,7 @@ void deleteBooks()
     {
         printf("File is not opened\n");
         exit(1);
+        return FILE_NOT_FOUND;
     }
     tmpFp = fopen("tmp.bin","wb");
     if(tmpFp == NULL)
@@ -23,6 +23,7 @@ void deleteBooks()
         fclose(fp);
         printf("File is not opened\n");
         exit(1);
+        return FILE_NOT_FOUND;
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
     fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, tmpFp);
@@ -33,10 +34,11 @@ void deleteBooks()
         if(addBookInfoInDataBase.books_id != bookDelete)
         {
             fwrite(&addBookInfoInDataBase,sizeof(addBookInfoInDataBase), 1, tmpFp);
+            found = SUCCESS;
         }
         else
         {
-            found = 1;
+            found = FAILURE;
         }
     }
     (found)? printf("\nRecord deleted successfully....."):printf("\nRecord not found");
@@ -44,4 +46,5 @@ void deleteBooks()
     fclose(tmpFp);
     remove(FILE_NAME);
     rename("tmp.bin",FILE_NAME);
+    return SUCCESS;
 }

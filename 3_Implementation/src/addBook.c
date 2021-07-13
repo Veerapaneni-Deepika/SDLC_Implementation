@@ -1,16 +1,18 @@
+
 #include "fun.h"
 
-void addBookInDataBase()
+error_t addBookInDataBase(const char* FILE_NAME)
 {
-    int days;
     s_BooksInfo addBookInfoInDataBase = {0};
     FILE *fp = NULL;
-    int status = 0;
+    error_t status = FAILURE;
     fp = fopen(FILE_NAME,"ab+");
     if(fp == NULL)
     {
         printf("File is not opened\n");
         exit(1);
+        return FILE_NOT_FOUND;
+
     }
     printf("\nADD NEW BOOKS\n");
     printf("\nENTER YOUR DETAILS BELOW:");
@@ -53,6 +55,26 @@ void addBookInDataBase()
         }
     }
     while(!status);
+    do
+    {
+        printf("\nEnter date in format (day/month/year) when it was issue: ");
+        scanf("%d/%d/%d",&addBookInfoInDataBase.bookIssueDate.dd,&addBookInfoInDataBase.bookIssueDate.mm,&addBookInfoInDataBase.bookIssueDate.yyyy);
+        status = isValidDate(&addBookInfoInDataBase.bookIssueDate);
+        if (!status)
+        {
+            printf("\nPlease enter a valid date.\n");
+        }
+    }
+    while(!status);
+    Date d;
+    d.dd=addBookInfoInDataBase.bookIssueDate.dd;
+    d.mm=addBookInfoInDataBase.bookIssueDate.mm;
+    d.yyyy=addBookInfoInDataBase.bookIssueDate.yyyy;
+    addDate(&d);
+    addBookInfoInDataBase.returnDate.dd=d.dd;
+    addBookInfoInDataBase.returnDate.mm=d.mm;
+    addBookInfoInDataBase.returnDate.yyyy=d.yyyy;
     fwrite(&addBookInfoInDataBase,sizeof(addBookInfoInDataBase), 1, fp);
     fclose(fp);
+    return SUCCESS;
 }

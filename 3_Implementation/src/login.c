@@ -1,9 +1,7 @@
 #include "fun.h"
-void login()
+
+error_t login(const char *FILE_NAME,const unsigned char userName[MAX_SIZE_USER_NAME],const unsigned char password[MAX_SIZE_PASSWORD])
 {
-    unsigned char userName[MAX_SIZE_USER_NAME] = {0};
-    unsigned char password[MAX_SIZE_PASSWORD] = {0};
-    int L=0;
     sFileHeader fileHeaderInfo = {0};
     FILE *fp = NULL;
     printf("\nLogin\n");
@@ -12,31 +10,18 @@ void login()
     {
         printf("File is not opened\n");
         exit(1);
+        return FILE_NOT_FOUND;
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
     fclose(fp);
-    do
+    if((!strcmp(userName,fileHeaderInfo.username)) && (!strcmp(password,fileHeaderInfo.password)))
     {
-        printf("\nUsername:");
-        fgets(userName,MAX_SIZE_USER_NAME,stdin);
-        printf("\nPassword:");
-        fgets(password,MAX_SIZE_PASSWORD,stdin);
-        if((!strcmp(userName,fileHeaderInfo.username)) && (!strcmp(password,fileHeaderInfo.password)))
-        {
-            menu();
-        }
-        else
-        {
-            printf("\nLogin Failed Enter Again Username & Password\n");
-            L++;
-        }
+        error_t status_menu=menu(FILE_NAME);
     }
-    while(L<=3);
-    if(L>3)
+    else
     {
-        printf("\nLogin Failed");
-        printf("Sorry,Unknown User.");
-        getchar();
-        system("cls");
+        printf("\nLogin Failed Enter Again Username & Password\n");
+        return FAILURE;
     }
+    return SUCCESS;
 }

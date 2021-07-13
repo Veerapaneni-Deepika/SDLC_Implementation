@@ -1,5 +1,5 @@
 #include "fun.h"
-void updateCredential(void)
+error_t updateCredential(const char *FILE_NAME)
 {
     sFileHeader fileHeaderInfo = {0};
     FILE *fp = NULL;
@@ -11,6 +11,7 @@ void updateCredential(void)
     {
         printf("File is not opened\n");
         exit(1);
+        return FILE_NOT_FOUND;
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
     if (fseek(fp,0,SEEK_SET) != 0)
@@ -18,6 +19,7 @@ void updateCredential(void)
         fclose(fp);
         printf("\nFacing issue while updating password\n");
         exit(1);
+        return FAILURE;
     }
     printf("\nNew Username:");
     fflush(stdin);
@@ -34,4 +36,5 @@ void updateCredential(void)
     fflush(stdin);
     getchar();
     exit(1);
+    return SUCCESS;
 }

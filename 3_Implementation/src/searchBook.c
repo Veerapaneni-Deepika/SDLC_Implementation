@@ -1,16 +1,16 @@
 #include "fun.h"
-void searchBooks()
+error_t searchBooks(const char *FILE_NAME)
 {
-    int found = 0;
+    error_t found = FAILURE;
     char bookName[MAX_BOOK_NAME] = {0};
     s_BooksInfo addBookInfoInDataBase = {0};
     FILE *fp = NULL;
-    int status = 0;
     fp = fopen(FILE_NAME,"rb");
     if(fp == NULL)
     {
         printf("\nFile is not opened\n");
         exit(1);
+        return FILE_NOT_FOUND;
     }
     printf("\nSEARCH BOOKS\n");
     //put the control on books detail
@@ -19,6 +19,7 @@ void searchBooks()
         fclose(fp);
         printf("\nFacing issue while reading file\n");
         exit(1);
+        return FAILURE;
     }
     printf("\nEnter Book Name to search:");
     fflush(stdin);
@@ -27,7 +28,7 @@ void searchBooks()
     {
         if(!strcmp(addBookInfoInDataBase.bookName, bookName))
         {
-            found = 1;
+            found = SUCCESS;
             break;
         }
     }
@@ -38,12 +39,16 @@ void searchBooks()
         printf("\nBook authorName = %s",addBookInfoInDataBase.authorName);
         printf("\nBook issue date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.bookIssueDate.dd,
                addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
+        printf("\nBook return date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.returnDate.dd,
+               addBookInfoInDataBase.returnDate.mm, addBookInfoInDataBase.returnDate.yyyy);
     }
     else
     {
-        printf("\nNo Record");
+        printf("\nNo Book");
+        return NOT_FOUND;
     }
     fclose(fp);
     printf("\nPress any key to go to main menu.....\n");
     getchar();
+    return found;
 }

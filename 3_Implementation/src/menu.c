@@ -1,9 +1,11 @@
 #include "fun.h"
-void menu()
+error_t menu(const char *FILE_NAME)
 {
+    error_t status;
     int choice = 0;
     do
     {
+        system(CLS);
         printf("\nMAIN MENU\n");
         printf("\n1.Add Books");
         printf("\n2.Search Books");
@@ -16,27 +18,29 @@ void menu()
         switch(choice)
         {
         case 1:
-            addBookInDataBase();
+            status = addBookInDataBase(FILE_NAME);
             break;
         case 2:
-            searchBooks();
+            status = searchBooks(FILE_NAME);
             break;
         case 3:
-            viewBooks();
+            status = viewBooks(FILE_NAME);
             break;
         case 4:
-            deleteBooks();
+            status = deleteBooks(FILE_NAME);
             break;
         case 5:
-            updateCredential();
+            status = updateCredential(FILE_NAME);
             break;
         case 0:
             printf("\n\tThank you!!!\n\n\n\n\n");
             exit(1);
             break;
+            return SUCCESS;
         default:
             printf("\nINVALID INPUT!!! Type between 0-5...");
-        }                                            //Switch Ended
+        }                                           
     }
-    while(choice != 0);                                        //Loop Ended
+    while(choice != 0);
+    return SUCCESS;
 }

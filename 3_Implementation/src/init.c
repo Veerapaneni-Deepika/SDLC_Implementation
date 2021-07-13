@@ -1,13 +1,13 @@
 #include "fun.h"
-void init()
+error_t init(const char *FILE_NAME)
 {
     FILE *fp = NULL;
-    int status = 0;
+    error_t status;
     const char defaultUsername[] ="deepika\n";
     const char defaultPassword[] ="deepika\n";
     sFileHeader fileHeaderInfo = {0};
     status = isFileExists(FILE_NAME);
-    if(!status)
+    if(status == -1)
     {
         //create the binary file
         fp = fopen(FILE_NAME,"wb");
@@ -22,17 +22,3 @@ void init()
     }
 }
 
-int isFileExists(const char *path)
-{
-    // Try to open file
-    FILE *fp = fopen(path, "rb");
-    int status = 0;
-    // If file does not exists
-    if (fp != NULL)
-    {
-        status = 1;
-        // File exists hence close file
-        fclose(fp);
-    }
-    return status;
-}

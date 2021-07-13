@@ -1,12 +1,12 @@
 # Name of the project
 PROJ_NAME = libraryManagement
+TEST_PROJ_NAME = Test_$(PROJ_NAME)
 FILE_NAME = DeepikaLTTS.bin
 # Output directory
 BUILD_DIR = build
 
 # All source code files
-SRC = main.c\
-src/addbook.c\
+SRC = src/addbook.c\
 src/deletebook.c\
 src/init.c\
 src/login.c\
@@ -14,12 +14,19 @@ src/menu.c\
 src/message.c\
 src/searchbook.c\
 src/updatebook.c\
+src/valid_file.c\
 src/valid_name.c\
+src/valid_date.c\
+src/addDate.c\
 src/valid_year.c\
 src/viewbook.c
 
+TEST_SRC = test/test.c\
+unity/unity.c
+
 # All include folders with header files
-INC = inc
+INC = -Iinc\
+-Iunity
 
 ifdef OS
    RM = rm -rf
@@ -34,7 +41,7 @@ else
 endif
 
 all: $(SRC) $(BUILD_DIR)
-	gcc -I $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+	gcc main.c $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
 $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
@@ -42,5 +49,8 @@ $(BUILD_DIR):
 run: all
 	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
+test: $(SRC) $(TEST_SRC) $(BUILD_DIR)
+	gcc $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 clean:
-	$(RM) $(BUILD_DIR) $(FILE_NAME)
+	$(RM) $(call FixPath,$(BUILD_DIR)/*) $(FILE_NAME)
