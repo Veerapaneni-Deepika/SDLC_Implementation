@@ -6,20 +6,20 @@ FILE_NAME = DeepikaLTTS.bin
 BUILD_DIR = build
 
 # All source code files
-SRC = src/addbook.c\
-src/deletebook.c\
+SRC = src/addBook.c\
+src/deleteBook.c\
 src/init.c\
 src/login.c\
 src/menu.c\
 src/message.c\
-src/searchbook.c\
-src/updatebook.c\
+src/searchBook.c\
+src/updateBook.c\
 src/valid_file.c\
 src/valid_name.c\
 src/valid_date.c\
 src/addDate.c\
 src/valid_year.c\
-src/viewbook.c
+src/viewBook.c
 
 TEST_SRC = test/test.c\
 unity/unity.c
