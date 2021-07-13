@@ -9,7 +9,6 @@ error_t login(const char *FILE_NAME,const unsigned char userName[MAX_SIZE_USER_N
     if(fp == NULL)
     {
         printf("File is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);

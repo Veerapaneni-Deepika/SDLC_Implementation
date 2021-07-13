@@ -1,6 +1,6 @@
 #include "fun.h"
 
-int isFileExists(const char *path)
+error_t isFileExists(const char *path)
 {
     // Try to open file
     FILE *fp = fopen(path, "rb");

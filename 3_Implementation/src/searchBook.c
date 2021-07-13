@@ -9,7 +9,6 @@ error_t searchBooks(const char *FILE_NAME)
     if(fp == NULL)
     {
         printf("\nFile is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     printf("\nSEARCH BOOKS\n");
@@ -18,7 +17,6 @@ error_t searchBooks(const char *FILE_NAME)
     {
         fclose(fp);
         printf("\nFacing issue while reading file\n");
-        exit(1);
         return FAILURE;
     }
     printf("\nEnter Book Name to search:");
@@ -26,7 +24,7 @@ error_t searchBooks(const char *FILE_NAME)
     fgets(bookName,MAX_BOOK_NAME,stdin);
     while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
     {
-        if(!strcmp(addBookInfoInDataBase.bookName, bookName))
+        if(!strcmp(bookName, addBookInfoInDataBase.bookName))
         {
             found = SUCCESS;
             break;
@@ -37,10 +35,8 @@ error_t searchBooks(const char *FILE_NAME)
         printf("\nBook id = %u\n",addBookInfoInDataBase.books_id);
         printf("\nBook name = %s",addBookInfoInDataBase.bookName);
         printf("\nBook authorName = %s",addBookInfoInDataBase.authorName);
-        printf("\nBook issue date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.bookIssueDate.dd,
-               addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
-        printf("\nBook return date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.returnDate.dd,
-               addBookInfoInDataBase.returnDate.mm, addBookInfoInDataBase.returnDate.yyyy);
+        printf("\nBook issue date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.bookIssueDate.dd,addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
+        printf("\nBook return date(day/month/year) =  (%d/%d/%d)",addBookInfoInDataBase.returnDate.dd,addBookInfoInDataBase.returnDate.mm, addBookInfoInDataBase.returnDate.yyyy);
     }
     else
     {

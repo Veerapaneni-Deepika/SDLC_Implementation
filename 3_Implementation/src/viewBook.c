@@ -10,26 +10,22 @@ error_t viewBooks(const char* FILE_NAME)
     if(fp == NULL)
     {
         printf("File is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     if (fseek(fp,FILE_HEADER_SIZE,SEEK_SET) != 0)
     {
         fclose(fp);
         printf("Facing issue while reading file\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
     {
-        printf("\nBook Count = %d\n\n",countBook);
+        printf("\nBook Count = %u\n",countBook);
         printf("\nBook id = %u",addBookInfoInDataBase.books_id);
         printf("\nBook name = %s",addBookInfoInDataBase.bookName);
         printf("\nBook authorName = %s",addBookInfoInDataBase.authorName);
-        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n\n",addBookInfoInDataBase.bookIssueDate.dd,
-               addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
-        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n\n",addBookInfoInDataBase.bookIssueDate.dd,
-               addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
+        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n",addBookInfoInDataBase.bookIssueDate.dd,addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
+        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n",addBookInfoInDataBase.bookIssueDate.dd,addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
         status = SUCCESS;
         ++countBook;
     }

@@ -28,7 +28,7 @@ error_t isValidDate(Date *validDate)
             return FAILURE;
         }
     }
-    /// handling months which has only 30 days
+
     if (validDate->mm == 4 || validDate->mm == 6 || validDate->mm == 9 || validDate->mm == 11)
         if (validDate->dd <= 30)
         {

@@ -20,5 +20,6 @@ error_t init(const char *FILE_NAME)
             fclose(fp);
         }
     }
+    return SUCCESS;
 }
 

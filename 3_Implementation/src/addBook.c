@@ -10,9 +10,7 @@ error_t addBookInDataBase(const char* FILE_NAME)
     if(fp == NULL)
     {
         printf("File is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
-
     }
     printf("\nADD NEW BOOKS\n");
     printf("\nENTER YOUR DETAILS BELOW:");
@@ -66,6 +64,7 @@ error_t addBookInDataBase(const char* FILE_NAME)
         }
     }
     while(!status);
+    
     Date d;
     d.dd=addBookInfoInDataBase.bookIssueDate.dd;
     d.mm=addBookInfoInDataBase.bookIssueDate.mm;
@@ -74,6 +73,7 @@ error_t addBookInDataBase(const char* FILE_NAME)
     addBookInfoInDataBase.returnDate.dd=d.dd;
     addBookInfoInDataBase.returnDate.mm=d.mm;
     addBookInfoInDataBase.returnDate.yyyy=d.yyyy;
+    
     fwrite(&addBookInfoInDataBase,sizeof(addBookInfoInDataBase), 1, fp);
     fclose(fp);
     return SUCCESS;

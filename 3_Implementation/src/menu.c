@@ -33,10 +33,9 @@ error_t menu(const char *FILE_NAME)
             status = updateCredential(FILE_NAME);
             break;
         case 0:
-            printf("\n\tThank you!!!\n\n\n\n\n");
-            exit(1);
-            break;
+            printf("\nThank you!!!");
             return SUCCESS;
+            break;
         default:
             printf("\nINVALID INPUT!!! Type between 0-5...");
         }                                           

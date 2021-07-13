@@ -2,19 +2,17 @@
 
 error_t deleteBooks(const char *FILE_NAME)
 {
-    int found = FAILURE;
+    error_t found = FAILURE;
     int bookDelete = 0;
     sFileHeader fileHeaderInfo = {0};
     s_BooksInfo addBookInfoInDataBase = {0};
     FILE *fp = NULL;
     FILE *tmpFp = NULL;
-    int status = 0;
     printf("Delete Books Details\n");
     fp = fopen(FILE_NAME,"rb");
     if(fp == NULL)
     {
         printf("File is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     tmpFp = fopen("tmp.bin","wb");
@@ -22,11 +20,11 @@ error_t deleteBooks(const char *FILE_NAME)
     {
         fclose(fp);
         printf("File is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
     fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, tmpFp);
+    
     printf("\nEnter Book ID NO. for delete:");
     scanf("%d",&bookDelete);
     while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
@@ -41,8 +39,8 @@ error_t deleteBooks(const char *FILE_NAME)
             found = FAILURE;
         }
     }
-    (found)? printf("\nRecord deleted successfully....."):printf("\nRecord not found");
     fclose(fp);
+    (found)? printf("\nRecord deleted successfully....."):printf("\nRecord not found");
     fclose(tmpFp);
     remove(FILE_NAME);
     rename("tmp.bin",FILE_NAME);

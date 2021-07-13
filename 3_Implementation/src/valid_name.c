@@ -1,6 +1,13 @@
 #include "fun.h"
-
-int isNameValid(const char *name)
+int isalphabet(char c);
+/// Function to check whether character is valid or not
+int isalphabet(char c)
+{
+    if((c>='A'&&c<='Z')||(c>='a'&&c<='z'))
+        return 1;
+    return 0;
+}
+error_t isNameValid(const char *name)
 {
     error_t validName = SUCCESS;
     int len = 0;
@@ -8,7 +15,8 @@ int isNameValid(const char *name)
     len = strlen(name);
     for(index =0; index <len ; ++index)
     {
-        if(!(isalpha(name[index])) && (name[index] != '\n') && (name[index] != ' '))
+        /// Checking for every character to be valid or not
+        if(!(isalphabet(name[index])) && (name[index] != '\n') && (name[index] != ' '))
         {
             validName = FAILURE;
             break;

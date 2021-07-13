@@ -1,7 +1,7 @@
 # Name of the project
 PROJ_NAME = libraryManagement
 TEST_PROJ_NAME = Test_$(PROJ_NAME)
-FILE_NAME = DeepikaLTTS.bin
+FILE_NAME = LTTSLibrary.bin
 # Output directory
 BUILD_DIR = build
 

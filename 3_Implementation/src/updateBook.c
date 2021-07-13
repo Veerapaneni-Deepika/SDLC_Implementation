@@ -10,7 +10,6 @@ error_t updateCredential(const char *FILE_NAME)
     if(fp == NULL)
     {
         printf("File is not opened\n");
-        exit(1);
         return FILE_NOT_FOUND;
     }
     fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
@@ -18,7 +17,6 @@ error_t updateCredential(const char *FILE_NAME)
     {
         fclose(fp);
         printf("\nFacing issue while updating password\n");
-        exit(1);
         return FAILURE;
     }
     printf("\nNew Username:");
@@ -35,6 +33,5 @@ error_t updateCredential(const char *FILE_NAME)
     printf("\nLogin Again:");
     fflush(stdin);
     getchar();
-    exit(1);
     return SUCCESS;
 }
