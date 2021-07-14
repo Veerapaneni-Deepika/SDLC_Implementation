@@ -1,4 +1,3 @@
-
 #include "fun.h"
 
 error_t addBookInDataBase(const char* FILE_NAME)

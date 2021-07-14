@@ -21,7 +21,7 @@ src/addDate.c\
 src/valid_year.c\
 src/viewBook.c
 
-TEST_SRC = test/test.c\
+TEST_SRC = test/library_test.c\
 unity/unity.c
 
 # All include folders with header files
@@ -40,17 +40,25 @@ else
    endif
 endif
 
-all: $(SRC) $(BUILD_DIR)
-	gcc main.c $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+.PHONY: all test clean
 
 $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
 
+all: $(BUILD_DIR)
+	gcc main.c $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+
 run: all
 	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
-test: $(SRC) $(TEST_SRC) $(BUILD_DIR)
-	gcc $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+test: $(SRC) $(TEST_SRC)
+	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/input_test.txt
+coverage:${PROJECT_NAME}
+	gcc -fprofile-arcs -ftest-coverage $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/input_test.txt
+	gcov -a $(SRC)
+	$(RM) *.gcda 
+	$(RM) *.gcno
 clean:
 	$(RM) $(call FixPath,$(BUILD_DIR)/*) $(FILE_NAME)
