@@ -65,3 +65,4 @@ clean:
 	$(RM) $(call FixPath,$(BUILD_DIR)/*) $(FILE_NAME) 
 	$(RM) *.gcda 
 	$(RM) *.gcno
+	$(RM) *.gcov
