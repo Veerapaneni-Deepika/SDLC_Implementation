@@ -1,0 +1,43 @@
+        -:    0:Source:src/updateBook.c
+        -:    1:#include "fun.h"
+    #####:    2:error_t updateCredential(const char *FILE_NAME)
+        -:    3:{
+    #####:    4:    sFileHeader fileHeaderInfo = {0};
+    #####:    5:    FILE *fp = NULL;
+    #####:    6:    unsigned char userName[MAX_SIZE_USER_NAME] = {0};
+    #####:    7:    unsigned char password[MAX_SIZE_PASSWORD] = {0};
+    #####:    8:    printf("\nUpdate Credential\n");
+    %%%%%:    8-block  0
+    #####:    9:    fp = fopen(FILE_NAME,"rb+");
+    #####:   10:    if(fp == NULL)
+        -:   11:    {
+    #####:   12:        printf("File is not opened\n");
+    %%%%%:   12-block  0
+    #####:   13:        return FILE_NOT_FOUND;
+        -:   14:    }
+    #####:   15:    fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+    %%%%%:   15-block  0
+    #####:   16:    if (fseek(fp,0,SEEK_SET) != 0)
+        -:   17:    {
+    #####:   18:        fclose(fp);
+    %%%%%:   18-block  0
+    #####:   19:        printf("\nFacing issue while updating password\n");
+    #####:   20:        return FAILURE;
+        -:   21:    }
+    #####:   22:    printf("\nNew Username:");
+    %%%%%:   22-block  0
+    #####:   23:    fflush(stdin);
+    #####:   24:    fgets(userName,MAX_SIZE_USER_NAME,stdin);
+    #####:   25:    printf("\nNew Password:");
+    #####:   26:    fflush(stdin);
+    #####:   27:    fgets(password,MAX_SIZE_PASSWORD,stdin);
+    #####:   28:    strncpy(fileHeaderInfo.username,userName,sizeof(userName));
+    #####:   29:    strncpy(fileHeaderInfo.password,password,sizeof(password));
+    #####:   30:    fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+    #####:   31:    fclose(fp);
+    #####:   32:    printf("\nYour Password has been changed successfully");
+    #####:   33:    printf("\nLogin Again:");
+    #####:   34:    fflush(stdin);
+    #####:   35:    getchar();
+    #####:   36:    return SUCCESS;
+        -:   37:}

@@ -1,0 +1,57 @@
+        -:    0:Source:src/menu.c
+        -:    1:#include "fun.h"
+        1:    2:error_t menu(const char *FILE_NAME)
+        -:    3:{
+        -:    4:    error_t status;
+        1:    5:    int choice = 0;
+        1:    5-block  0
+        -:    6:    do
+        -:    7:    {
+        1:    8:        system(CLS);
+        1:    8-block  0
+        1:    9:        printf("\nMAIN MENU\n");
+        1:   10:        printf("\n1.Add Books");
+        1:   11:        printf("\n2.Search Books");
+        1:   12:        printf("\n3.View Books");
+        1:   13:        printf("\n4.Delete Book");
+        1:   14:        printf("\n5.Update Password");
+        1:   15:        printf("\n0.Exit");
+        1:   16:        printf("\nEnter choice => ");
+        1:   17:        scanf("%d",&choice);
+        1:   18:        switch(choice)
+        -:   19:        {
+    #####:   20:        case 1:
+    #####:   21:            status = addBookInDataBase(FILE_NAME);
+    %%%%%:   21-block  0
+    #####:   22:            break;
+    #####:   23:        case 2:
+    #####:   24:            status = searchBooks(FILE_NAME);
+    %%%%%:   24-block  0
+    #####:   25:            break;
+    #####:   26:        case 3:
+    #####:   27:            status = viewBooks(FILE_NAME);
+    %%%%%:   27-block  0
+    #####:   28:            break;
+    #####:   29:        case 4:
+    #####:   30:            status = deleteBooks(FILE_NAME);
+    %%%%%:   30-block  0
+    #####:   31:            break;
+    #####:   32:        case 5:
+    #####:   33:            status = updateCredential(FILE_NAME);
+    %%%%%:   33-block  0
+    #####:   34:            break;
+        1:   35:        case 0:
+        1:   36:            printf("\nThank you!!!");
+        1:   36-block  0
+        1:   37:            return SUCCESS;
+        -:   38:            break;
+    #####:   39:        default:
+    #####:   40:            printf("\nINVALID INPUT!!! Type between 0-5...");
+    %%%%%:   40-block  0
+        -:   41:        }                                           
+        -:   42:    }
+    #####:   43:    while(choice != 0);
+    %%%%%:   43-block  0
+    #####:   44:    return SUCCESS;
+    %%%%%:   44-block  0
+        -:   45:}

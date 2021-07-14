@@ -1,0 +1,20 @@
+        -:    0:Source:src/valid_file.c
+        -:    1:#include "fun.h"
+        -:    2:
+        2:    3:error_t isFileExists(const char *path)
+        -:    4:{
+        -:    5:    // Try to open file
+        2:    6:    FILE *fp = fopen(path, "rb");
+        2:    6-block  0
+        2:    7:    error_t status = FILE_NOT_FOUND;
+        -:    8:    // If file does not exists
+        2:    9:    if (fp != NULL)
+        -:   10:    {
+        1:   11:        status = SUCCESS;
+        -:   12:        // File exists hence close file
+        1:   13:        fclose(fp);
+        1:   13-block  0
+        -:   14:    }
+        2:   15:    return status;
+        2:   15-block  0
+        -:   16:}

@@ -1,0 +1,12 @@
+        -:    0:Source:src/valid_year.c
+        -:    1:
+        6:    2:int  leap_year(int year)
+        -:    3:{
+        6:    4:    return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
+        6:    4-block  0
+        4:    4-block  1
+        5:    4-block  2
+        4:    4-block  3
+        2:    4-block  4
+        6:    4-block  5
+        -:    5:}

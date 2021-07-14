@@ -1,0 +1,52 @@
+        -:    0:Source:src/viewBook.c
+        -:    1:#include "fun.h"
+        1:    2:error_t viewBooks(const char* FILE_NAME)
+        -:    3:{
+        1:    4:    error_t status = FAILURE;
+        1:    5:    s_BooksInfo addBookInfoInDataBase = {0};
+        1:    6:    FILE *fp = NULL;
+        1:    7:    unsigned int countBook = 1;
+        1:    8:    printf("\nVIEW BOOKS DETAILS\n");
+        1:    8-block  0
+        1:    9:    fp = fopen(FILE_NAME,"rb");
+        1:   10:    if(fp == NULL)
+        -:   11:    {
+    #####:   12:        printf("File is not opened\n");
+    %%%%%:   12-block  0
+    #####:   13:        return FILE_NOT_FOUND;
+        -:   14:    }
+        1:   15:    if (fseek(fp,FILE_HEADER_SIZE,SEEK_SET) != 0)
+        1:   15-block  0
+        -:   16:    {
+    #####:   17:        fclose(fp);
+    %%%%%:   17-block  0
+    #####:   18:        printf("Facing issue while reading file\n");
+    #####:   19:        return FILE_NOT_FOUND;
+        -:   20:    }
+        1:   21:    while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
+        1:   21-block  0
+        1:   21-block  1
+        -:   22:    {
+    #####:   23:        printf("\nBook Count = %u\n",countBook);
+    %%%%%:   23-block  0
+    #####:   24:        printf("\nBook id = %u",addBookInfoInDataBase.books_id);
+    #####:   25:        printf("\nBook name = %s",addBookInfoInDataBase.bookName);
+    #####:   26:        printf("\nBook authorName = %s",addBookInfoInDataBase.authorName);
+    #####:   27:        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n",addBookInfoInDataBase.bookIssueDate.dd,addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
+    #####:   28:        printf("\tBook issue date(day/month/year) =  (%d/%d/%d)\n",addBookInfoInDataBase.bookIssueDate.dd,addBookInfoInDataBase.bookIssueDate.mm, addBookInfoInDataBase.bookIssueDate.yyyy);
+    #####:   29:        status = SUCCESS;
+    #####:   30:        ++countBook;
+        -:   31:    }
+        1:   32:    fclose(fp);
+        1:   32-block  0
+        1:   33:    if(!status)
+        -:   34:    {
+        1:   35:        printf("\nNo Record");
+        1:   35-block  0
+        -:   36:    }
+        1:   37:    printf("\nPress any key to go to main menu.....");
+        1:   37-block  0
+        1:   38:    fflush(stdin);
+        1:   39:    getchar();
+        1:   40:    return SUCCESS;
+        -:   41:}

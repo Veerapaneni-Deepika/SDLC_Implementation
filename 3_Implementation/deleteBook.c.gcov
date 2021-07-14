@@ -1,0 +1,62 @@
+        -:    0:Source:src/deleteBook.c
+        -:    1:#include "fun.h"
+        -:    2:
+        1:    3:error_t deleteBooks(const char *FILE_NAME)
+        -:    4:{
+        1:    5:    error_t found = FAILURE;
+        1:    6:    int bookDelete = 0;
+        1:    7:    sFileHeader fileHeaderInfo = {0};
+        1:    8:    s_BooksInfo addBookInfoInDataBase = {0};
+        1:    9:    FILE *fp = NULL;
+        1:   10:    FILE *tmpFp = NULL;
+        1:   11:    printf("Delete Books Details\n");
+        1:   11-block  0
+        1:   12:    fp = fopen(FILE_NAME,"rb");
+        1:   13:    if(fp == NULL)
+        -:   14:    {
+    #####:   15:        printf("File is not opened\n");
+    %%%%%:   15-block  0
+    #####:   16:        return FILE_NOT_FOUND;
+        -:   17:    }
+        1:   18:    tmpFp = fopen("tmp.bin","wb");
+        1:   18-block  0
+        1:   19:    if(tmpFp == NULL)
+        -:   20:    {
+    #####:   21:        fclose(fp);
+    %%%%%:   21-block  0
+    #####:   22:        printf("File is not opened\n");
+    #####:   23:        return FILE_NOT_FOUND;
+        -:   24:    }
+        1:   25:    fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+        1:   25-block  0
+        1:   26:    fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, tmpFp);
+        -:   27:    
+        1:   28:    printf("\nEnter Book ID NO. for delete:");
+        1:   29:    scanf("%d",&bookDelete);
+        1:   30:    while (fread (&addBookInfoInDataBase, sizeof(addBookInfoInDataBase), 1, fp))
+        1:   30-block  0
+        -:   31:    {
+    #####:   32:        if(addBookInfoInDataBase.books_id != bookDelete)
+    %%%%%:   32-block  0
+        -:   33:        {
+    #####:   34:            fwrite(&addBookInfoInDataBase,sizeof(addBookInfoInDataBase), 1, tmpFp);
+    %%%%%:   34-block  0
+    #####:   35:            found = SUCCESS;
+        -:   36:        }
+        -:   37:        else
+        -:   38:        {
+    #####:   39:            found = FAILURE;
+    %%%%%:   39-block  0
+        -:   40:        }
+        -:   41:    }
+        1:   42:    fclose(fp);
+        1:   42-block  0
+       1*:   43:    (found)? printf("\nRecord deleted successfully....."):printf("\nRecord not found");
+    %%%%%:   43-block  0
+        1:   43-block  1
+        1:   44:    fclose(tmpFp);
+        1:   44-block  0
+        1:   45:    remove(FILE_NAME);
+        1:   46:    rename("tmp.bin",FILE_NAME);
+        1:   47:    return SUCCESS;
+        -:   48:}
