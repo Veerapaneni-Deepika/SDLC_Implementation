@@ -53,12 +53,14 @@ run: all
 
 test: $(SRC) $(TEST_SRC)
 	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/input_test.txt
+	./$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC) < test/input_test.txt
+
 coverage:${PROJECT_NAME}
 	gcc -fprofile-arcs -ftest-coverage $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/input_test.txt
 	gcov -a $(SRC)
 	$(RM) *.gcda 
 	$(RM) *.gcno
+
 clean:
-	$(RM) $(call FixPath,$(BUILD_DIR)/*) $(FILE_NAME)
+	$(RM) $(call FixPath,$(BUILD_DIR)/*) $(FILE_NAME) 

@@ -52,7 +52,7 @@ error_t addBookInDataBase(const char* FILE_NAME)
         }
     }
     while(!status);
-    do
+    /*do
     {
         printf("\nEnter date in format (day/month/year) when it was issue: ");
         scanf("%d/%d/%d",&addBookInfoInDataBase.bookIssueDate.dd,&addBookInfoInDataBase.bookIssueDate.mm,&addBookInfoInDataBase.bookIssueDate.yyyy);
@@ -62,7 +62,7 @@ error_t addBookInDataBase(const char* FILE_NAME)
             printf("\nPlease enter a valid date.\n");
         }
     }
-    while(!status);
+    while(!status);*/
     
     Date d;
     d.dd=addBookInfoInDataBase.bookIssueDate.dd;
